@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+$color-line:#A7B0CA;
+$color-gray-light-1:#73777B;
+$color-blue-light-1:#78CDE7;
+$color-blue-md-1:#0078AA;
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: 'Open Sans', sans-serif;
+    text-align:justify;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body{
+    display: grid;
+    grid-template-columns: [blank1-start] 1fr [blank1-end resume-start] minmax(min-content, 110rem) [resume-end blank2-start] 1fr [blank2-end];
+    background-color: $color-blue-light-1;
+}
+
+p{
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: $color-gray-light-1;
+
+}
+
+.resume{
+    margin: 4rem 0;
+    padding: 4rem;
+    grid-column: resume-start / resume-end;
+    border-radius: 5px;
+    background-color: #FFF;
+    box-shadow: 0 2px 4px rgba($color: #000000, $alpha: .3);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: max-content repeat(4, min-content);
+    grid-gap: 0 1.5rem;
+    
+    &-top{
+        grid-column: 1 / -1;
+        border-bottom: solid 1px $color-line;
+        padding-bottom: 1.5rem;
+    }
+}
+
+.personal_information{
+    grid-row: 2 / span 1;
+    border-right: 1px solid $color-line;
+}
+
+.education{
+    grid-row: 3 / span 1;
+    &-box{
+        &:not(:last-child){
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.skills{
+    grid-row: 4 / span 1;
+}
+
+.certificates{
+    grid-row: 5 / span 1;
+}
+.list{
+    list-style: none; 
+
+    li{        
+        color:$color-gray-light-1;
+        margin: .5rem 0;        
+    }    
+
+    &-skills{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+       
+
+        li{
+            font-size: 1.6rem;
+        }
+    }
+
+    &-certificates{
+        list-style: square;
+        padding: 0 1.7rem;
+        li{
+            font-size: 1.4rem;
+        }
+
+    }
+}
+
+.objective{
+    grid-row:  2 /span 1;
+}
+
+.experience{
+    grid-row: 3 / -1;
+    
+    &-box{
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+
+        &:not(:last-child){
+            margin-bottom: 2rem;
+        }
+
+        &--details{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        
+    }
+}
+
+.heading-1{
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    margin-bottom: 1rem;
+}
+
+.heading-2{
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    &.light{
+        color:$color-gray-light-1;
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: .8rem;
+        &::after{
+            height: 0;           
+        }
+}
+
+    &::after{
+        content:'';
+        height: 3px;
+        width: 3rem;
+        margin-top: .5rem;
+        background-color: #000000;
+    }
+}
+
+.heading-3{
+    color:$color-gray-light-1;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    
+    &.colored{
+        color:$color-blue-md-1;
+    }
+
+}
+
+.heading-4{
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    &:not(:last-child){
+        margin-bottom: 3px;
+    }
+}
+
+.padding-top{
+    padding-top: 2rem;
+}
+
+.border-right{
+    border-right: 1px solid $color-line;
+}
+
+@media print {
+    @page { margin: -1cm 0;}
+    body { margin: 0; }
+    html{
+        font-size: 50%;
+    }
+    .heading-1{
+        font-size: 3rem;
+    }
+    .heading-2{
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 1100px){
+    .resume{
+        grid-column: 1/-1;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+@media screen and (max-width: 990px){
+    .experience-box--details{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 800px){
+    html{
+        font-size: 55%;
+    }
+}
+
+@media screen and (max-width:610px){
+
+    .resume{
+        display: flex;
+        flex-direction: column;
+
+        &-top{
+            order: -1;
+        }       
+    }
+
+    .personal_information{
+        order: -1;
+    }
+
+    .objective{
+        order:-1;
+    }
+    .certificates{
+        order:1;
+        border-bottom: 1px solid $color-line;
+        padding-bottom: 2rem;
+    }
+    .border-right{
+        border-right: none;
+    }
+
+    
+}
